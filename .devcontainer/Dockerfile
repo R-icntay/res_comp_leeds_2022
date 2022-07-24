@@ -20,14 +20,17 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && usermod -a -G staff ${USERNAME} \
     && apt-get -y install \
         python3.9 \
-        python3-pip \
+        #python3-pip \
         libgit2-dev \
         libcurl4-openssl-dev \
         libssl-dev \
         libxml2-dev \
         libxt-dev \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts \
-    && python3 -m pip --no-cache-dir install radian \
+    # Installing pip for python 3.9
+    && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+    && python3.9 get-pip.py \ 
+    && pip --no-cache-dir install radian \
     && pip --disable-pip-version-check --no-cache-dir install pandas \
     && pip --disable-pip-version-check --no-cache-dir install seaborn \
     && install2.r --error --skipinstalled --ncpus -1 \
@@ -62,7 +65,7 @@ RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends libzmq3-dev \
     && install2.r --error --skipinstalled --ncpus -1 IRkernel \
-    && python3 -m pip --no-cache-dir install jupyter \
+    && pip --no-cache-dir install jupyter \
     && R --vanilla -s -e 'IRkernel::installspec(user = FALSE)'
 
 # Expose Rstudio port. Log in with rstudio/rstudio
