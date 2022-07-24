@@ -1,0 +1,28 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+## Let's Explore Penguins
+
+```{r}
+# Load required packages
+library(tidyverse)
+library(palmerpenguins)
+
+# Display first 5 observations
+penguins |>
+  slice_head(n = 5)
+```
+
+
+### Explore how the bill length varies with each species
+
+```{r}
+penguins |>
+  ggplot(mapping = aes(x = species, y = bill_length_mm)) +
+  geom_jitter(aes(color = species),
+    width = 0.1, show.legend = FALSE, alpha = 0.8) +
+  scale_color_manual(values = c("darkorange", "darkorchid", "cyan4")) +
+  theme_light()
+```
