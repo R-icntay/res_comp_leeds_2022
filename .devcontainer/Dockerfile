@@ -68,7 +68,7 @@ RUN apt-get update \
     && pip --no-cache-dir install jupyter \
     && R --vanilla -s -e 'IRkernel::installspec(user = FALSE)'
 
-# Expose Rstudio port. Log in with rstudio/rstudio
+# Expose Rstudio port. Log in with rstudio/rstudio as username and password
 EXPOSE 8787
 
 # Expose Jupyter port
