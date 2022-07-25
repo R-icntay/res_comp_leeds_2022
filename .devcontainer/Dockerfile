@@ -27,7 +27,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
         libxml2-dev \
         libxt-dev \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts \
-    # Installing pip for python 3.9
+    # Installing pip for python 3.9: https://askubuntu.com/questions/1331391/how-do-you-install-pip-for-python3-9-4
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && python3.9 get-pip.py \ 
     && pip --no-cache-dir install radian \
