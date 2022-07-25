@@ -1,10 +1,15 @@
+// Use this to enable some R shortcuts in VS Code
 // Place your key bindings in this file to override the defaults
-// Keyboard shortcuts for common R operators
+// Keyboard shortcuts for common RStudio operators
+
+// Go to settings ---> keyboard shortcuts
+// On the upper right, click on "Open Keyboard Shortcuts (JSON)
+// Copy the shortcuts below
 [ 
   // Add assignment operator
   {
       "key": "Alt+-",
-      "command": "type",
+      "command": "assignment operator",
       "args": { "text": " <- " }
       //"when": "editorTextFocus && editorLangId == r"
     },
@@ -13,7 +18,7 @@
 
     {
       "key": "Ctrl+Shift+m",
-      "command": "type",
+      "command": "pipe",
       "args": { "text": " %>% " }
       //"when": "editorTextFocus && editorLangId == r"
     }
