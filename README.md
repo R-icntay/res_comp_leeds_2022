@@ -14,3 +14,4 @@ We create a dev container that can support data science tasks in **R**, **Python
 ## Resources
 
 - [A repository of development container definitions](https://github.com/microsoft/vscode-dev-containers)
+- [Introduction to dev containers](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/introduction-to-dev-containers)
