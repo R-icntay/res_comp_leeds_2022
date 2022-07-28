@@ -13,6 +13,16 @@ Many data science teams have become multilingual, leveraging R, Python, Julia an
 
 We create a dev container that can support data science tasks in **R**, **Python**, **VS Code** and **RStudio**.
 
+#### Spinning up RStudio server
+
+Toggle terminal: `ctrl` + ` ` `
+
+Navigate to `PORTS` tab, then click on the 🌐 icon:
+
+<p align = "center">
+    <img src = images\rsport.png>
+</p>
+
 
 
 ### Resources
