@@ -15,7 +15,7 @@ We create a dev container that can support data science tasks in **R**, **Python
 
 #### Spinning up RStudio server
 
-Toggle terminal: `ctrl` + ` ` `
+Toggle terminal: `ctrl` + `
 
 Navigate to `PORTS` tab, then click on the 🌐 icon:
 
