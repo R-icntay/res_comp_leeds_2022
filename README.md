@@ -23,7 +23,7 @@ Navigate to `PORTS` tab, then click on the 🌐 icon:
     <img src = images\rsport.png>
 </p>
 
-
+The default username and password is **rstudio** (as it should? 🤭)
 
 ### Resources
 
