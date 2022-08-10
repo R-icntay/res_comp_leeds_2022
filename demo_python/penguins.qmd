@@ -1,0 +1,38 @@
+---
+title: "Exploring Penguins in Python"
+author: "Eric"
+toc: true
+toc-location: left
+format: 
+  html:
+    number-sections: true
+    html-math-method: katex
+    code-tools: true
+    code-fold: true
+    code-link: true
+editor: visual
+execute: 
+  warning: false
+  message: false
+jupyter: python3.9
+---
+
+## Let's Explore Penguins
+
+```{python}
+# Import packages
+import pandas as pd
+import seaborn as sns
+
+# Load data
+penguins = sns.load_dataset("penguins")
+penguins.head()
+```
+
+### Explore how the bill length varies with each species
+
+```{python}
+# Visualise distribution using scatter plots
+my_pal = {"Adelie": "darkorange", "Chinstrap":"darkorchid", "Gentoo": "green"}
+sns.catplot(x="species", y="bill_length_mm", jitter=True, data=penguins, palette=my_pal, alpha = 0.8)
+```
