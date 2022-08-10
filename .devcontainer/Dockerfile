@@ -30,9 +30,9 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     # Installing pip for python 3.9: https://askubuntu.com/questions/1331391/how-do-you-install-pip-for-python3-9-4
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
     && python3.9 get-pip.py \ 
-    && pip --no-cache-dir install radian \
-    && pip --disable-pip-version-check --no-cache-dir install pandas \
-    && pip --disable-pip-version-check --no-cache-dir install seaborn \
+    && pip3 --no-cache-dir install radian \
+    && pip3 --disable-pip-version-check --no-cache-dir install pandas \
+    && pip3 --disable-pip-version-check --no-cache-dir install seaborn \
     && install2.r --error --skipinstalled --ncpus -1 \
         palmerpenguins \
         languageserver \
@@ -65,13 +65,22 @@ RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends libzmq3-dev \
     && install2.r --error --skipinstalled --ncpus -1 IRkernel \
-    && pip --no-cache-dir install jupyter \
+    && pip3 --no-cache-dir install jupyter \
     && R --vanilla -s -e 'IRkernel::installspec(user = FALSE)'
+
+# [Optional] Uncomment this section to install Quarto
+# Find download link at: https://quarto.org/docs/get-started/
+RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.0.38/quarto-1.0.38-linux-amd64.deb \
+    && sudo dpkg -i quarto-1.0.38-linux-amd64.deb
+    && rm quarto-1.0.38-linux-amd64.deb
 
 # Expose Rstudio port. Log in with rstudio/rstudio as username and password
 EXPOSE 8787
 
 # Expose Jupyter port
 EXPOSE 8888
+
+# Expose Quarto port
+EXPOSE 6634
 
 CMD ["/init"]
