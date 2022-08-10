@@ -80,7 +80,4 @@ EXPOSE 8787
 # Expose Jupyter port
 EXPOSE 8888
 
-# Expose Quarto port
-EXPOSE 6634
-
 CMD ["/init"]
