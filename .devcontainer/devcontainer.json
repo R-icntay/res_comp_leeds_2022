@@ -45,11 +45,6 @@
 			"label": "Jupyter",
 			"requireLocalPort": true,
 			"onAutoForward": "ignore"
-		},
-		"6634": {
-			"label": "Quarto",
-			"requireLocalPort": true,
-			"onAutoForward": "openBrowser"
 		}
 	},
 

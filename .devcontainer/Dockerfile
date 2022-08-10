@@ -71,7 +71,7 @@ RUN apt-get update \
 # [Optional] Uncomment this section to install Quarto
 # Find download link at: https://quarto.org/docs/get-started/
 RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.0.38/quarto-1.0.38-linux-amd64.deb \
-    && sudo dpkg -i quarto-1.0.38-linux-amd64.deb
+    && sudo dpkg -i quarto-1.0.38-linux-amd64.deb \
     && rm quarto-1.0.38-linux-amd64.deb
 
 # Expose Rstudio port. Log in with rstudio/rstudio as username and password
