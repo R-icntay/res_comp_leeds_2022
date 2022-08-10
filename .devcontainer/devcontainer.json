@@ -19,10 +19,11 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		// R extensions
-		"ikuyadeu.r",
+		// R extensions: https://renkun.me/2022/03/06/my-recommendations-of-vs-code-extensions-for-r/
 		"rdebugger.r-debugger",
 		"reditorsupport.r",
+		"quarto.quarto",
+		"usernamehw.errorlens",
 	
 		// Add Jupyter and Python  vs code extensions
 		"ms-toolsai.jupyter",
@@ -33,7 +34,7 @@
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// Forward Jupyter and RStudio ports
-	"forwardPorts": [8787, 8888],
+	"forwardPorts": [8787, 8888, 6634],
 	"portsAttributes": {
 		"8787": {
 			"label": "Rstudio",
@@ -44,6 +45,11 @@
 			"label": "Jupyter",
 			"requireLocalPort": true,
 			"onAutoForward": "ignore"
+		},
+		"6634": {
+			"label": "Quarto",
+			"requireLocalPort": true,
+			"onAutoForward": "openBrowser"
 		}
 	},
 
