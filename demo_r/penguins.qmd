@@ -1,5 +1,5 @@
 ---
-title: "Exploring Penguins"
+title: "Exploring Penguins in R"
 author: "Eric"
 toc: true
 toc-location: left
