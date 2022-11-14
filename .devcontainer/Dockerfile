@@ -2,7 +2,9 @@
 ARG VARIANT="4.2"
 FROM rocker/tidyverse:${VARIANT}
 
-RUN sudo apt-get update && sudo apt-get install liblttng-ust0
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN sudo apt-get update && sudo apt-get -y install liblttng-ust0
 # Includes packages: devtools tidyverse tidymodels glmnet randomForest xgboost 
 
 # Use the [Option] comment to specify true/false arguments that should appear in VS Code UX
@@ -30,8 +32,8 @@ RUN sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
         libxt-dev \
         gosu \
         #liblttng-ust0 \
-    && sudo apt-get update\
-    && sudo apt-get install liblttng-ust0\
+    #&& sudo apt-get update\
+    #&& sudo apt-get install liblttng-ust0\
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts \
     # Installing pip for python 3.9: https://askubuntu.com/questions/1331391/how-do-you-install-pip-for-python3-9-4
     && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
