@@ -4,7 +4,7 @@ FROM rocker/tidyverse:${VARIANT}
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN sudo apt-get update && sudo apt-get -y install liblttng-ust0
+RUN sudo apt-get update && sudo apt-get -y install liblttng-ust1
 # Includes packages: devtools tidyverse tidymodels glmnet randomForest xgboost 
 
 # Use the [Option] comment to specify true/false arguments that should appear in VS Code UX
