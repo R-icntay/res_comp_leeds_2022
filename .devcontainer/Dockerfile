@@ -22,7 +22,7 @@ COPY library-scripts/*.sh /tmp/library-scripts/
 RUN sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && /bin/bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" "true" "true" \
     && usermod -a -G staff ${USERNAME} \
-    && apt-get -y install 
+    && apt-get -y install \
         python3-pip \
         libgit2-dev \
         libcurl4-openssl-dev \
