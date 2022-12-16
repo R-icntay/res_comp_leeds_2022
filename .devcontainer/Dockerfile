@@ -1,6 +1,10 @@
 # R version: 4, 4.1, 4.0
 ARG VARIANT="4.2"
 FROM rocker/tidyverse:${VARIANT}
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN sudo apt-get update && sudo apt-get -y install liblttng-ust1
 # Includes packages: devtools tidyverse tidymodels glmnet randomForest xgboost 
 
 # Use the [Option] comment to specify true/false arguments that should appear in VS Code UX
@@ -8,14 +12,14 @@ FROM rocker/tidyverse:${VARIANT}
 # [Option] Install zsh
 ARG INSTALL_ZSH="true"
 # [Option] Upgrade OS packages to their latest versions
-ARG UPGRADE_PACKAGES="false"
+ARG UPGRADE_PACKAGES="true"
 
 # Install needed packages and setup non-root user. Use a separate RUN statement to add your own dependencies.
 ARG USERNAME=vscode
 ARG USER_UID=1001
 ARG USER_GID=$USER_UID
 COPY library-scripts/*.sh /tmp/library-scripts/
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+RUN sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && /bin/bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" "true" "true" \
     && usermod -a -G staff ${USERNAME} \
     && apt-get -y install \
@@ -26,6 +30,10 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
         libssl-dev \
         libxml2-dev \
         libxt-dev \
+        gosu \
+        #liblttng-ust0 \
+    #&& sudo apt-get update\
+    #&& sudo apt-get install liblttng-ust0\
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts \
     # Installing pip for python 3.9: https://askubuntu.com/questions/1331391/how-do-you-install-pip-for-python3-9-4
     #&& curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
