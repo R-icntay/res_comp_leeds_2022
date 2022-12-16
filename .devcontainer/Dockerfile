@@ -19,8 +19,8 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && /bin/bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" "true" "true" \
     && usermod -a -G staff ${USERNAME} \
     && apt-get -y install \
-        python3.9 \
-        #python3-pip \
+        #python3.9 \
+        python3-pip \
         libgit2-dev \
         libcurl4-openssl-dev \
         libssl-dev \
@@ -28,11 +28,16 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
         libxt-dev \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts \
     # Installing pip for python 3.9: https://askubuntu.com/questions/1331391/how-do-you-install-pip-for-python3-9-4
-    && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    && python3.9 get-pip.py \ 
-    && pip3 --no-cache-dir install radian \
-    && pip3 --disable-pip-version-check --no-cache-dir install pandas \
-    && pip3 --disable-pip-version-check --no-cache-dir install seaborn \
+    #&& curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+    # && python3.9 get-pip.py \ 
+    # && pip3 --no-cache-dir install radian \
+    # && pip3 --disable-pip-version-check --no-cache-dir install pandas \
+    # && pip3 --disable-pip-version-check --no-cache-dir install seaborn \
+    # && install2.r --error --skipinstalled --ncpus -1 \
+    #&& python3.9 get-pip.py \ 
+    && pip --no-cache-dir install radian \
+    && pip --disable-pip-version-check --no-cache-dir install pandas \
+    && pip --disable-pip-version-check --no-cache-dir install seaborn \
     && install2.r --error --skipinstalled --ncpus -1 \
         palmerpenguins \
         languageserver \
