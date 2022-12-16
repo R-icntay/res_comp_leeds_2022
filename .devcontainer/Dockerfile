@@ -22,8 +22,7 @@ COPY library-scripts/*.sh /tmp/library-scripts/
 RUN sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && /bin/bash /tmp/library-scripts/common-debian.sh "${INSTALL_ZSH}" "${USERNAME}" "${USER_UID}" "${USER_GID}" "${UPGRADE_PACKAGES}" "true" "true" \
     && usermod -a -G staff ${USERNAME} \
-    && apt-get -y install \
-        #python3.9 \
+    && apt-get -y install 
         python3-pip \
         libgit2-dev \
         libcurl4-openssl-dev \
@@ -31,21 +30,12 @@ RUN sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
         libxml2-dev \
         libxt-dev \
         gosu \
-        #liblttng-ust0 \
-    #&& sudo apt-get update\
-    #&& sudo apt-get install liblttng-ust0\
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts \
-    # Installing pip for python 3.9: https://askubuntu.com/questions/1331391/how-do-you-install-pip-for-python3-9-4
-    #&& curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    # && python3.9 get-pip.py \ 
-    # && pip3 --no-cache-dir install radian \
-    # && pip3 --disable-pip-version-check --no-cache-dir install pandas \
-    # && pip3 --disable-pip-version-check --no-cache-dir install seaborn \
-    # && install2.r --error --skipinstalled --ncpus -1 \
-    #&& python3.9 get-pip.py \ 
+    # Install radian and python packages
     && pip --no-cache-dir install radian \
     && pip --disable-pip-version-check --no-cache-dir install pandas \
     && pip --disable-pip-version-check --no-cache-dir install seaborn \
+    # Install R packages
     && install2.r --error --skipinstalled --ncpus -1 \
         palmerpenguins \
         languageserver \
@@ -81,11 +71,11 @@ RUN apt-get update \
     && pip3 --no-cache-dir install jupyter \
     && R --vanilla -s -e 'IRkernel::installspec(user = FALSE)'
 
-# [Optional] Uncomment this section to install Quarto
+# [Optional] Uncomment this section to install Quarto --- No need: Now installed in rocker/tidyverse:4.2
 # Find download link at: https://quarto.org/docs/get-started/
-RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.0.38/quarto-1.0.38-linux-amd64.deb \
-    && sudo dpkg -i quarto-1.0.38-linux-amd64.deb \
-    && rm quarto-1.0.38-linux-amd64.deb
+# RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.0.38/quarto-1.0.38-linux-amd64.deb \
+#     && sudo dpkg -i quarto-1.0.38-linux-amd64.deb \
+#     && rm quarto-1.0.38-linux-amd64.deb
 
 # Expose Rstudio port. Log in with rstudio/rstudio as username and password
 EXPOSE 8787
